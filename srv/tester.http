@@ -1,0 +1,83 @@
+###Get the service document
+http://localhost:4004/odata/v4/CatalogService/
+###Get the service metadata document
+http://localhost:4004/odata/v4/CatalogService/$metadata
+###Get the service with employee data
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+###POST - create employee data
+
+POST http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+Content-Type: application/json
+
+{
+      "nameFirst": "Christiano",
+      "nameMiddle": null,
+      "nameLast": "Ronaldo",
+      "nameInitials": null,
+      "sex": "M",
+      "language": "E",
+      "phoneNumber": null,
+      "email": "chist.naldo@sap.com",
+      "loginName": "CHRISTRO",
+      "Currency_code": "USD",
+      "salaryAmount": 95000,
+      "accountNumber": "345678901",
+      "bankId": "99999888",
+      "bankName": "Deutsches Geldinstitut"
+}
+
+
+###Get the single employee which was created
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/6e55f426-7053-4052-b5c1-8c5900eba40f
+
+###Update employee data
+PATCH http://localhost:4004/odata/v4/CatalogService/EmployeeSet/6e55f426-7053-4052-b5c1-8c5900eba40f
+Content-Type: application/json
+
+{
+    "salaryAmount": 10000000
+}
+
+###Delete Employee Data
+DELETE http://localhost:4004/odata/v4/CatalogService/EmployeeSet/6e55f426-7053-4052-b5c1-8c5900eba40f
+
+###Get the Purchase orders
+http://localhost:4004/odata/v4/CatalogService/POs
+
+###Get the Single PO
+http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC36052
+
+###Get the Purchase order along with PO Items data together 
+http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC36052?$expand=Items
+
+###Count of records
+http://localhost:4004/odata/v4/CatalogService/POs/$count
+
+###Search data in system
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=nameFirst eq 'Sally'
+
+###Search with pattern match
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=Contains(loginName,'SH')
+
+###Pagination
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$top=5&$skip=2
+
+###Select fewer columns
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$select=nameFirst,email,loginName
+
+###getting data for single order
+http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC36052
+
+###testing the boost action
+POST http://localhost:4004/odata/v4/CatalogService/POs('74867AD200E41EDBA5D8B0C98DC36052')/CatalogService.boost
+Content-Type: application/json
+
+{}
+
+###getting data for single order
+http://localhost:4004/odata/v4/CatalogService/getLargestOrder()
+
+###getting data for single order
+http://localhost:4004/odata/v4/MyService/ReadEmployeeSrv
+
+
