@@ -8,7 +8,7 @@ module.exports = cds.service.impl( async function(){
             //here we get a PO ID which is NODE_KEY as input
             const ID = req.params[0];
             //console log for developer understanding
-            console.log("Hey Amigo, Your purchase order with id " + req.params[0].NODE_KEY + " will be boosted");
+            console.log("Hey Amigo, Your purchase order with id = " + req.params[0].NODE_KEY + " will be boosted");
             //CDS query language provided by SAP, we never write Direct SQl - DB agnostic
             //getting the sap cds tx library class object to initiate DB transaction
             const tx = cds.tx(req);
